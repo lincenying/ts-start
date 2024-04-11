@@ -1,0 +1,62 @@
+{
+  "name": "__ts-start__",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@8.7.6",
+  "description": "LinCenYing's typescript start",
+  "author": "LinCenYing <lincenying@gmail.com> (https://github.com/lincenying/)",
+  "license": "MIT",
+  "homepage": "https://github.com/lincenying/ts-start",
+  "keywords": [
+    "ts-start"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild -stub",
+    "postpublish": "simple-open-url https://github.com/lincenying/ts-start",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish -r --access public",
+    "test": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:ts": "tsc --noEmit",
+    "prepare": "npx simple-git-hooks"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.21.12",
+    "@lincy/eslint-config": "^4.3.1",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "esno": "^4.7.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.11.1",
+    "simple-open-url": "^3.0.1",
+    "typescript": "^5.4.3",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.4.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{[jt]s?(x),vue,md}": "eslint --fix"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
